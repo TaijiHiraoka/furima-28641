@@ -25,13 +25,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column    | Type     | Options     |
-| --------- | -------- | ----------- |
-| nick_name | string   | null: false |
-| name      | string   | null: false |
-| email     | string   | null: false |
-| password  | string   | null: false |
-| birthday  | datetime | null: false |
+| Column           | Type     | Options     |
+| ---------------- | -------- | ----------- |
+| nickname         | string   | null: false |
+| family_name      | string   | null: false |
+| first_name       | string   | null: false |
+| family_name_kana | string   | null: false |
+| first_name_kana  | string   | null: false |
+| email            | string   | null: false |
+| password         | string   | null: false |
+| birthday         | date     | null: false |
 
 ### Association
 
@@ -40,28 +43,38 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column      | Type    | Options     |
-| ----------- | ------- | ----------- |
-| image       | string  | null: false |
-| item_name   | string  | null: false |
-| description | text    | null: false |
-| send_way    | string  | null: false |
-| plice       | integer | null: false |
-| user_id     | integer | null: false |
+| Column      | Type    | Options           |
+| ----------- | ------- | ----------------- |
+| item_name   | string  | null: false       |
+| description | text    | null: false       |
+| category    | string  | null: false       |
+| condition   | string  | null: false       |
+| send_cost   | string  | null: false       |
+| territory   | string  | null: false       |
+| send_days   | string  | null: false       |
+| price       | integer | null: false       |
+| user_id     | integer | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :buys
+- has_one :buy
 
 ## buys テーブル
 
-| Column      | Type    | Options     |
-| ----------- | ------- | ----------- |
-| address     | string  | null: false |
-| pay_way     | string  | null: false |
-| item_id     | integer | null: false |
-| user_id     | integer | null: false |
+| Column          | Type    | Options           |
+| --------------- | ------- | ----------------- |
+| card_number     | integer | null: false       |
+| expiration_date | date    | null: false       |
+| security_code   | integer | null: false       |
+| postal_code     | integer | null: false       |
+| prefecture      | string  | null: false       |
+| municipality    | string  | null: false       |
+| address         | string  | null: false       |
+| building_name   | string  | null: false       |
+| phone_number    | integer | null: false       |
+| item_id         | integer | foreign_key: true |
+| user_id         | integer | foreign_key: true |
 
 ### Association
 
