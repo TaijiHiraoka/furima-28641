@@ -38,39 +38,43 @@ Things you may want to cover:
 
 ### Association
 
+- has_many :items
 - has_many :buy_controls
 
 ## items テーブル
 
-| Column      | Type    | Options           |
-| ----------- | ------- | ----------------- |
-| item_name   | string  | null: false       |
-| description | text    | null: false       |
-| category    | string  | null: false       |
-| condition   | integer | null: false       |
-| send_cost   | integer | null: false       |
-| territory   | integer | null: false       |
-| send_days   | integer | null: false       |
-| price       | integer | null: false       |
+| Column       | Type    | Options           |
+| ------------ | ------- | ----------------- |
+| name         | string  | null: false       |
+| description  | text    | null: false       |
+| category_id  | integer | null: false       |
+| condition_id | integer | null: false       |
+| send_cost_id | integer | null: false       |
+| territory_id | integer | null: false       |
+| send_days_id | integer | null: false       |
+| price        | integer | null: false       |
+| user_id      | integer | foreign_key: true |
 
 ### Association
 
 - has_one :buy_control
+- belongs_to :user
 
-## buys テーブル
+## addresses テーブル
 
 | Column          | Type    | Options           |
 | --------------- | ------- | ----------------- |
 | postal_code     | string  | null: false       |
-| prefecture      | string  | null: false       |
+| prefecture_id   | integer | null: false       |
 | municipality    | string  | null: false       |
 | address         | string  | null: false       |
 | building_name   | string  |                   |
-| phone_number    | integer | null: false       |
+| phone_number    | string  | null: false       |
+| buy_controls_id | integer | foreign_key: true |
 
 ### Association
 
-- has_one :buy_control
+- belongs_to :buy_control
 
 ## buy_controls テーブル
 
@@ -78,10 +82,9 @@ Things you may want to cover:
 | --------------- | ------- | ----------------- |
 | user_id         | integer | foreign_key: true |
 | item_id         | integer | foreign_key: true |
-| buy_id          | integer | foreign_key: true |
 
 ### Association
 
+- has_one :address
 - belongs_to :user
 - belongs_to :item
-- belongs_to :buy
