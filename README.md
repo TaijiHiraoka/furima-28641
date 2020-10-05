@@ -38,8 +38,7 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :items
-- has_many :buys
+- has_many :buy_controls
 
 ## items テーブル
 
@@ -48,35 +47,41 @@ Things you may want to cover:
 | item_name   | string  | null: false       |
 | description | text    | null: false       |
 | category    | string  | null: false       |
-| condition   | string  | null: false       |
-| send_cost   | string  | null: false       |
-| territory   | string  | null: false       |
-| send_days   | string  | null: false       |
+| condition   | integer | null: false       |
+| send_cost   | integer | null: false       |
+| territory   | integer | null: false       |
+| send_days   | integer | null: false       |
 | price       | integer | null: false       |
-| user_id     | integer | foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- has_one :buy
+- has_one :buy_control
 
 ## buys テーブル
 
 | Column          | Type    | Options           |
 | --------------- | ------- | ----------------- |
-| card_number     | integer | null: false       |
-| expiration_date | date    | null: false       |
-| security_code   | integer | null: false       |
-| postal_code     | integer | null: false       |
+| postal_code     | string  | null: false       |
 | prefecture      | string  | null: false       |
 | municipality    | string  | null: false       |
 | address         | string  | null: false       |
-| building_name   | string  | null: false       |
+| building_name   | string  |                   |
 | phone_number    | integer | null: false       |
-| item_id         | integer | foreign_key: true |
-| user_id         | integer | foreign_key: true |
 
 ### Association
 
-- belongs_to :item
+- has_one :buy_control
+
+## buy_controls テーブル
+
+| Column          | Type    | Options           |
+| --------------- | ------- | ----------------- |
+| user_id         | integer | foreign_key: true |
+| item_id         | integer | foreign_key: true |
+| buy_id          | integer | foreign_key: true |
+
+### Association
+
 - belongs_to :user
+- belongs_to :item
+- belongs_to :buy
