@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe User do
   before do
     @user = FactoryBot.build(:user)
@@ -43,7 +44,7 @@ describe User do
         @user.password = "aaaaa"
         @user.password_confirmation = "aaaaa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters")
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it "passwordが存在してもpassword_confirmationが空では登録できない" do
         @user.password_confirmation = ""
@@ -58,7 +59,7 @@ describe User do
       it "family_nameが全角入力以外だと登録できない" do
         @user.family_name = 'aaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name doesn't Zenkaku")
+        expect(@user.errors.full_messages).to include("Family name does not Zenkaku")
       end
       it "first_nameが空だと登録できない" do
         @user.first_name = ''
@@ -68,7 +69,7 @@ describe User do
       it "first_nameが全角入力以外だと登録できない" do
         @user.first_name = 'aaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name doesn't Zenkaku")
+        expect(@user.errors.full_messages).to include("First name does not Zenkaku")
       end
       it "family_name_kanaが空だと登録できない" do
         @user.family_name_kana = ''
@@ -78,7 +79,7 @@ describe User do
       it "family_name_kanaが全角カナ入力以外だと登録できない" do
         @user.family_name_kana = 'あああああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name kana doesn't Zenkaku Kana")
+        expect(@user.errors.full_messages).to include("Family name kana does not Zenkaku Kana")
       end
       it "first_name_kanaが空だと登録できない" do
         @user.first_name_kana = ''
@@ -88,7 +89,7 @@ describe User do
       it "first_name_kanaが全角カナ入力以外だと登録できない" do
         @user.first_name_kana = 'あああああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Fitst name kana doesn't Zenkaku Kana")
+        expect(@user.errors.full_messages).to include("First name kana does not Zenkaku Kana")
       end
       it "birthdayが空だと登録できない" do
         @user.birthday = ''
