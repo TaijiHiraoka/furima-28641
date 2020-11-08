@@ -16,7 +16,7 @@ class User < ApplicationRecord
     validates :family_name_kana, format: zenkaku_kana_validate
     validates :first_name_kana, format: zenkaku_kana_validate
     validates :email, format: { with: /@.+/, message: 'does not have @ mark' }
-    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]{6,}+\z/i, message: 'too short (minimum is 6 characters)', message:'does not Half-width alphanumeric characters' }
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]{6,}+\z/i, message: 'too short (minimum is 6 characters)', message:'is not a mixture of Half-width alphanumeric characters' }
     validates :birthday
   end
   

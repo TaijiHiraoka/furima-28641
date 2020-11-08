@@ -41,16 +41,20 @@ describe User do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "passwordが5文字以下であれば登録できない" do
-        @user.password = "00000"
-        @user.password_confirmation = "00000"
+        @user.password = "00aaa"
+        @user.password_confirmation = "00aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
-      it "passwordが半角英数字以外であれば登録できない" do
+      it "passwordが半角英数字混合でなければ登録できない" do
         @user.password = "AAAAAA"
+        @user.password = "000000"
+        @user.password = "aaaaaa"
         @user.password_confirmation = "AAAAAA"
+        @user.password_confirmation = "000000"
+        @user.password_confirmation = "aaaaaa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password does not Half-width alphanumeric characters")
+        expect(@user.errors.full_messages).to include("Password is not a mixture of Half-width alphanumeric characters")
       end
       it "passwordが存在してもpassword_confirmationが空では登録できない" do
         @user.password_confirmation = ""
