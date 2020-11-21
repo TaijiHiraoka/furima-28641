@@ -2,9 +2,10 @@ class ItemsController < ApplicationController
   # before_action :move_to_index, except: [:index]
   # before_action :authenticate_user!
 
-  def index
-    @items = Item.all
-  end
+  # 以降機能実装までコメントアウト
+  # def index
+  #   @items = Item.all
+  # end
 
   def new
     @item = Item.new
@@ -24,11 +25,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :send_cost_id, :prefecture_id, :send_day_id, :price, :image).merge(user_id: current_user.id)
   end
-
-  # def move_to_index
-  #   unless user_signed_in?
-  #     redirect_to action: :index
-  #   end
-  # end
 
 end
