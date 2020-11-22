@@ -51,7 +51,7 @@ Things you may want to cover:
 | condition_id  | integer | null: false       |
 | send_cost_id  | integer | null: false       |
 | prefecture_id | integer | null: false       |
-| send_days_id  | integer | null: false       |
+| send_day_id   | integer | null: false       |
 | price         | integer | null: false       |
 | user_id       | integer | foreign_key: true |
 

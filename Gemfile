@@ -71,3 +71,10 @@ gem 'devise'
 
 #追加
 gem 'pry-rails'
+
+#ActiveStorage 画像加工ツール
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
+
+#ActiveHash
+gem 'active_hash'
