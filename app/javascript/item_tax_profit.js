@@ -1,5 +1,4 @@
 function calculate (){
-  console.log("手数料と利益を計算し表示する機能を実装");
   const priceInput = document.getElementById("item-price");
   
   priceInput.addEventListener("input", () => {
