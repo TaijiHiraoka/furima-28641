@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  # 以降機能実装までコメントアウト
-  # def index
-  #   @items = Item.all
-  # end
+
+  def index
+    @items = Item.all
+  end
 
   def new
     @item = Item.new
