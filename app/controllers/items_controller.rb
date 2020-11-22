@@ -1,14 +1,11 @@
 class ItemsController < ApplicationController
-  # before_action :move_to_index, except: [:index]
-  # before_action :authenticate_user!
-
   # 以降機能実装までコメントアウト
   # def index
   #   @items = Item.all
   # end
 
   def new
-    @item = Item.new
+    @item = Item.new(item_params)
   end
 
   def create
