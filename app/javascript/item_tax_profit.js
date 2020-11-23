@@ -12,4 +12,4 @@ function calculate (){
   });
 }
 
-window.addEventListener('load', calculate);
+window.addEventListener("load", calculate);
