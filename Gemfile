@@ -66,11 +66,10 @@ group :production do  #:productionで本番環境のみで使用されること�
   gem 'rails_12factor'
 end
 
+gem 'pry-rails'
+
 #devise導入
 gem 'devise'
-
-#追加
-gem 'pry-rails'
 
 #ActiveStorage 画像加工ツール
 gem 'mini_magick'
@@ -78,3 +77,6 @@ gem 'image_processing', '~> 1.2'
 
 #ActiveHash
 gem 'active_hash'
+
+#決算処理機能を追加
+gem 'payjp'

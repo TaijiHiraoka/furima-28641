@@ -16,10 +16,10 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :price, numericality: { with: /\A[0-9]+\z/, message: "isn't Half-width number" }
-    validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of range (¥300~9,999,999)"}
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of range (¥300~9,999,999)" }
   end
   
-  with_options numericality: {other_than: 1, message: "dosen't selected" } do
+  with_options numericality: { other_than: 1, message: "dosen't selected" } do
     validates :category_id
     validates :condition_id
     validates :send_cost_id

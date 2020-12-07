@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :items
-  has_many :buy_controls
+  has_many :buy_control
 
   zenkaku_validate = { with: /\A[ぁ-んァ-ン一-龥]/, message: 'does not Zenkaku' }
   zenkaku_kana_validate = { with: /\A[ァ-ヶー－]+\z/, message: 'does not Zenkaku Kana' }

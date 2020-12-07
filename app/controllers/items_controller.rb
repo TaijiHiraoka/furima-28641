@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.includes(:user).order("created_at DESC")
+    @buy_controls = BuyControl.all
   end
 
   def new
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @buy_controls = BuyControl.all
   end
 
   def edit
