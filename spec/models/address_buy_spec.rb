@@ -55,8 +55,14 @@ RSpec.describe AddressBuy, type: :model do
       it "電話番号にハイフンが使われていると保存ができないこと" do
         @address_buy.phone_number = '123-4567-8901'
         @address_buy.valid?
-        expect(@address_buy.errors.full_messages).to include("Phone number can't use Hyphen")
+        expect(@address_buy.errors.full_messages).to include("Phone number can't use Hyphen and Alphanumeric characters")
       end
+      it "電話番号が英数混同だと保存ができないこと" do
+        @address_buy.phone_number = '090aaaa1111'
+        @address_buy.valid?
+        expect(@address_buy.errors.full_messages).to include("Phone number can't use Hyphen and Alphanumeric characters")
+      end
+
     end
   end
 end

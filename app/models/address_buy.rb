@@ -7,7 +7,9 @@ class AddressBuy
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "dosen't use Hyphen" }
     validates :municipality
     validates :address
-    validates :phone_number, format: { with: /\A\d{,11}\z/, message: "can't use Hyphen" }
+    validates :phone_number, format: { with: /\A\d{,11}\z/, message: "can't use Hyphen and Alphanumeric characters" }
+    validates :user_id
+    validates :item_id
   end
 
   with_options numericality: { other_than: 1, message: "dosen't selected" } do

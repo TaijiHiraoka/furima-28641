@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   before_action :move_to_index, only: [:index]
 
@@ -31,8 +32,7 @@ class AddressesController < ApplicationController
       redirect_to root_path and return
     end
 
-    @buy_controls = BuyControl.all
-    if @buy_controls.exists?(item_id: @item)
+    if @item.buy_control != nil
       redirect_to root_path and return
     end
   end
