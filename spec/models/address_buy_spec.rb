@@ -32,7 +32,7 @@ RSpec.describe AddressBuy, type: :model do
         @address_buy.valid?
         expect(@address_buy.errors.full_messages).to include("Postal code dosen't use Hyphen")
       end
-      it "県名が空では保存ができないこと" do
+      it "県名が選択されていないと保存ができないこと" do
         @address_buy.prefecture_id = 1
         @address_buy.valid?
         expect(@address_buy.errors.full_messages).to include("Prefecture dosen't selected")
@@ -52,10 +52,10 @@ RSpec.describe AddressBuy, type: :model do
         @address_buy.valid?
         expect(@address_buy.errors.full_messages).to include("Phone number can't be blank")
       end
-      it "電話番号が11桁以下でないと保存ができないこと" do
-        @address_buy.phone_number = '123456789012'
+      it "電話番号にハイフンが使われていると保存ができないこと" do
+        @address_buy.phone_number = '123-4567-8901'
         @address_buy.valid?
-        expect(@address_buy.errors.full_messages).to include("Phone number is 11 digits or less")
+        expect(@address_buy.errors.full_messages).to include("Phone number can't use Hyphen")
       end
     end
   end

@@ -138,7 +138,7 @@
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" %>
             <%# 商品が売れていればsold outを表示しましょう %> 
-            <%if @buy_controls.exists?(item_id: item) %>
+            <% if item.buy_control != nil %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
