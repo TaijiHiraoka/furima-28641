@@ -28,10 +28,6 @@ class AddressesController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in? && @item.user_id != current_user.id
-      redirect_to root_path and return
-    end
-
     if @item.buy_control != nil
       redirect_to root_path and return
     end
