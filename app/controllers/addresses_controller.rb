@@ -28,7 +28,7 @@ class AddressesController < ApplicationController
   end
 
   def move_to_index
-    if @item.buy_control != nil
+    if current_user.id == @item.user_id || @item.buy_control != nil
       redirect_to root_path and return
     end
   end
