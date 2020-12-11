@@ -20,11 +20,14 @@ class ItemsController < ApplicationController
   end
 
   def show
+    unless user_signed_in?
+      redirect_to user_session_path
+    end
   end
-
+  
   def edit
   end
-
+  
   def update
     if @item.update(item_params)
       redirect_to item_path(@item.id)
@@ -32,7 +35,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
+  
   def destroy
     if user_signed_in? && @item.user_id == current_user.id
       @item.destroy
@@ -41,12 +44,12 @@ class ItemsController < ApplicationController
       redirect_to items_path
     end
   end
-
+  
   private
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :send_cost_id, :prefecture_id, :send_day_id, :price, :image).merge(user_id: current_user.id)
   end
-
+  
   def set_item
     @item = Item.find(params[:id])
   end
