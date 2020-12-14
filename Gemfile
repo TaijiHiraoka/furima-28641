@@ -80,3 +80,6 @@ gem 'active_hash'
 
 #決算処理機能を追加
 gem 'payjp'
+
+#S3追加
+gem "aws-sdk-s3", require: false
